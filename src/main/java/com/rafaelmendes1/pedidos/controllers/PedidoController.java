@@ -4,6 +4,7 @@ import com.rafaelmendes1.pedidos.dto.PedidoDto;
 import com.rafaelmendes1.pedidos.dto.StatusDto;
 import com.rafaelmendes1.pedidos.services.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -56,5 +57,10 @@ public class PedidoController {
 
         return ResponseEntity.ok().build();
 
+    }
+
+    @GetMapping("/porta")
+    public String exibirPorta(@Value("${local.server.port}") String porta){
+        return String.format("Instância executando na porta %s", porta);
     }
 }
